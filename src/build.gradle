@@ -1,0 +1,49 @@
+buildscript {
+    repositories {
+        maven { url 'http://download.oracle.com/maven'}
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:5.2.0'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+    id 'maven-publish'
+}
+
+
+description = 'Find and copy photos'
+group = 'com.eelstretching'
+
+mainClassName = 'com.eelstretching.photo.PhotoDB'
+
+repositories {
+    jcenter()
+    mavenLocal()
+    maven { url 'https://artifactory-slc.oraclecorp.com/artifactory/fmw-virtual' }
+    maven { url 'https://citadel.us.oracle.com/artifactory/libs-release-local' }
+}
+
+dependencies {
+    implementation 'com.drewnoakes:metadata-extractor:2.13.0'
+    implementation 'com.sleepycat:je:7.5.11'
+    implementation 'com.oracle.labs.mlrg.olcut:olcut-core:5.1.0'
+    testImplementation     'junit:junit:4.13'
+}
+
+jar {
+    manifest {
+        attributes (
+      'Implementation-Title': project.name,
+      'Implementation-Version': project.version,
+      'Built-JDK': System.getProperty('java.version'),
+      'Build-Time-ISO-8601': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        )
+    }
+  
+}
