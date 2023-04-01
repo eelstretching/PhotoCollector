@@ -1,39 +1,29 @@
-buildscript {
-    repositories {
-        maven { url 'http://download.oracle.com/maven'}
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.github.jengelman.gradle.plugins:shadow:5.2.0'
-    }
-}
-
 plugins {
     id 'java'
-    id 'jacoco'
     id 'application'
-    id 'com.github.johnrengelman.shadow' version '5.2.0'
-    id 'maven-publish'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
-
 
 description = 'Find and copy photos'
 group = 'com.eelstretching'
-
 mainClassName = 'com.eelstretching.photo.PhotoDB'
 
 repositories {
-    jcenter()
     mavenLocal()
-    maven { url 'https://artifactory-slc.oraclecorp.com/artifactory/fmw-virtual' }
-    maven { url 'https://citadel.us.oracle.com/artifactory/libs-release-local' }
+    gradlePluginPortal()
+    maven {
+        url "https://repo1.maven.org/maven2"
+    }
+    maven {
+    	  url "file://${projectDir}/local-repository"
+    }
 }
 
 dependencies {
-    implementation 'com.drewnoakes:metadata-extractor:2.13.0'
-    implementation 'com.sleepycat:je:7.5.11'
-    implementation 'com.oracle.labs.mlrg.olcut:olcut-core:5.1.0'
-    testImplementation     'junit:junit:4.13'
+    implementation 'com.drewnoakes:metadata-extractor:2.18.0'
+    implementation 'com.sleepycat:je:7.5.1'
+    implementation 'com.oracle.labs.olcut:olcut-core:5.3.0'
+    testImplementation 'junit:junit:4.13'
 }
 
 jar {
