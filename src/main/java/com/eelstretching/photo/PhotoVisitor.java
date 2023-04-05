@@ -35,7 +35,7 @@ public class PhotoVisitor implements FileVisitor<Path> {
     private static final Logger logger = Logger.getLogger(PhotoVisitor.class.getName());
 
     private final Set<String> extensions = new HashSet<>(
-            Arrays.asList("jpg", "jpeg", "mov", "avi")
+            Arrays.asList("jpg", "jpeg", "heic", "mov", "avi")
     );
 
     private int[] exifTags = new int[]{

@@ -38,6 +38,10 @@ public class PhotoCollector {
 
         Path photoDBPath
                 = outputPath.resolve("photo.db");
+        
+        if(!Files.exists(photoDBPath)) {
+            Files.createDirectories(photoDBPath);
+        }
 
         try (PhotoDB photoDB = new PhotoDB(outputPath, photoDBPath)) {
 

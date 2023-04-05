@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- *
+ * Information about a single photo
  */
 @Entity(version = 1)
 public class PhotoInfo {

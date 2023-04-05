@@ -2,8 +2,6 @@ package com.eelstretching.photo;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.security.AccessController;
-import java.security.PrivilegedAction;
 import java.util.logging.Formatter;
 import java.util.logging.Handler;
 import java.util.logging.Level;
